@@ -1,0 +1,6 @@
+{
+  "name": "EcoStawi Foundation",
+  "description": "Investing in Nature. Empowering Communities. Building resilient ecosystems and thriving communities through conservation, climate action, innovation, and sustainable livelihoods.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -26,9 +26,6 @@ export default function Contact() {
           <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-forest-900 tracking-tight">
             Contact EcoStawi
           </h3>
-          <p className="text-earth-500 mt-4 leading-relaxed">
-            Have questions about our verified carbon pipelines, school woodlots, coastal mangrove concessions, or CSR alignments? Reach out and our regional officers will correspond with you.
-          </p>
           <div className="w-16 h-1 bg-emerald-500 mx-auto mt-4 rounded-full" />
         </div>
 
@@ -40,7 +37,7 @@ export default function Contact() {
             
             {/* Core Address Card */}
             <div className="bg-white rounded-3xl p-8 border border-earth-200 shadow-sm space-y-6">
-              <h4 className="font-display font-bold text-xl text-forest-900">Registered Secretariat</h4>
+              <h4 className="font-display font-bold text-xl text-forest-900">Contact Us</h4>
               
               <div className="space-y-4">
                 {/* Phone */}
@@ -81,7 +78,7 @@ export default function Contact() {
                   <div>
                     <span className="block text-[10px] uppercase font-mono tracking-wider text-earth-400">Postal Address</span>
                     <p className="text-sm font-bold text-forest-850">
-                      P.O. Box 24888 - 00100
+                      P.O.Box 1888-00100, Nairobi
                     </p>
                     <p className="text-xs text-earth-500">Nairobi, Kenya</p>
                   </div>
@@ -89,27 +86,24 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Regional Stations Card */}
+            {/* Operational Counties Card */}
             <div className="bg-white rounded-3xl p-8 border border-earth-200 shadow-sm">
               <h4 className="font-display font-bold text-lg text-forest-900 mb-4 flex items-center space-x-2">
                 <Clock className="w-5 h-5 text-forest-600" />
-                <span>Field Operations Stations</span>
+                <span>Operational Counties</span>
               </h4>
               
-              <ul className="space-y-4 font-mono text-[11px] text-earth-500">
-                <li className="border-b pb-3 border-earth-100 last:border-b-0 last:pb-0">
-                  <strong className="block text-forest-800 text-xs font-display font-bold">Terrestrial Canopy Hub:</strong>
-                  <span>Nakuru Field Station, Mau Complex Fringe, Nakuru County, Kenya</span>
-                </li>
-                <li className="border-b pb-3 border-earth-100 last:border-b-0 last:pb-0">
-                  <strong className="block text-forest-800 text-xs font-display font-bold">Blue Economy Base:</strong>
-                  <span>Kilifi Coastal Station, Mnarani Lagoon, Kilifi County, Kenya</span>
-                </li>
-                <li>
-                  <strong className="block text-forest-800 text-xs font-display font-bold">Climate Agroforestry Hub:</strong>
-                  <span>Matuga Agricultural Concession, Kwale County, Kenya</span>
-                </li>
-              </ul>
+              <p className="text-xs text-earth-500 mb-4 leading-relaxed font-light">
+                Our strategic conservation initiatives and local chapters are active across five key counties in Kenya:
+              </p>
+
+              <div className="flex flex-wrap gap-2">
+                {['Nairobi County', 'Mombasa County', 'Kwale County', 'Kilifi County', 'Tana River County'].map((county, idx) => (
+                  <span key={idx} className="bg-forest-50 text-forest-900 px-3 py-2 rounded-xl font-mono text-xs font-bold border border-forest-200">
+                    {county}
+                  </span>
+                ))}
+              </div>
             </div>
 
           </div>
@@ -198,7 +192,7 @@ export default function Contact() {
                 </div>
 
                 <p className="text-xs text-earth-400 max-w-sm mx-auto leading-relaxed border-t border-earth-200 pt-6">
-                  A verification receipt has been recorded. Our corporate registry office will redirect your inquiry to the respective Program Station Director, and we will reply to your email address (<strong>{email}</strong>) within 24 business hours.
+                  A verification receipt has been recorded. Our corporate desk will redirect your inquiry to our regional team, and we will reply to your email address (<strong>{email}</strong>) within 24 business hours.
                 </p>
 
                 <button

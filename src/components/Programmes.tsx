@@ -113,12 +113,25 @@ export default function Programmes() {
                               <span>Key Initiatives & Strategy:</span>
                             </h5>
                             <ul className="space-y-2.5">
-                              {prog.details.map((detail, dIdx) => (
-                                <li key={dIdx} className="flex items-start text-xs text-earth-500 leading-relaxed">
-                                  <span className="text-emerald-500 mr-2.5 text-base font-black leading-none">•</span>
-                                  <span>{detail}</span>
-                                </li>
-                              ))}
+                              {prog.details.map((detail, dIdx) => {
+                                const [title, ...rest] = detail.split(': ');
+                                const text = rest.join(': ');
+                                return (
+                                  <li key={dIdx} className="flex items-start text-xs text-earth-600 leading-relaxed">
+                                    <span className="text-emerald-500 mr-2.5 text-base font-black leading-none mt-0.5">•</span>
+                                    <span>
+                                      {text ? (
+                                        <>
+                                          <strong className="text-forest-900 font-bold">{title}: </strong>
+                                          {text}
+                                        </>
+                                      ) : (
+                                        detail
+                                      )}
+                                    </span>
+                                  </li>
+                                );
+                              })}
                             </ul>
                           </motion.div>
                         )}
@@ -158,7 +171,7 @@ export default function Programmes() {
               We grow ecosystems. We grow opportunities. We grow together.
             </h4>
             <p className="text-forest-200 text-sm leading-relaxed mb-6 font-light">
-              At EcoStawi Foundation, we believe that nature and people flourish together. Every tree restored, every wetland protected, every livelihood strengthened, and every partnership formed is an investment in a future where communities and ecosystems thrive side by side.
+              At EcoStawi Foundation, we believe that nature and people flourish together. Every tree planted, every wetland protected, every livelihood strengthened, and every partnership formed is an investment in a future where communities and ecosystems thrive side by side.
             </p>
             <div className="flex flex-wrap gap-4 text-xs font-mono font-bold text-emerald-300">
               <span className="flex items-center space-x-1.5"><Trees className="w-4 h-4" /> <span>Ecosystem-focused</span></span>

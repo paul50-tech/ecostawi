@@ -32,7 +32,7 @@ export interface Project {
   county: string;
   coordinates: { lat: number; lng: number };
   status: 'Planning' | 'Active' | 'Completed';
-  type: 'Forest Restoration' | 'Mangrove Restoration' | 'Blue Economy' | 'Climate Smart Agriculture' | 'Carbon Project';
+  type: 'Forest Restoration' | 'Coastal Ecosystem Restoration' | 'Mangrove Restoration' | 'Blue Economy' | 'Climate Smart Agriculture' | 'Climate-Smart Agriculture' | 'Carbon Project' | 'Community Livelihoods & Green Enterprise Development' | 'Green Schools Initiative';
   sizeHectares: number;
   treesPlanted?: number;
   carbonOffsetTons: number;

@@ -35,9 +35,11 @@ export default function Footer({ activeTab, setActiveTab }: FooterProps) {
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About Us' },
     { id: 'programmes', label: 'Our Programmes' },
+    { id: 'explore', label: 'Explore Our Work' },
     { id: 'digital', label: 'EcoStawi Digital' },
     { id: 'news', label: 'News & Stories' },
     { id: 'get-involved', label: 'Get Involved' },
+    { id: 'donate', label: 'Donate to Our Mission' },
     { id: 'contact', label: 'Contact Us' }
   ];
 

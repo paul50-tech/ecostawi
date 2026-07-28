@@ -395,25 +395,31 @@ export default function NewsStories({ onNavigate }: NewsStoriesProps) {
             <div className="bg-earth-100 text-earth-500 p-4 rounded-full w-14 h-14 mx-auto flex items-center justify-center">
               <FileText className="w-7 h-7" />
             </div>
-            <h4 className="font-display font-bold text-xl text-forest-900">No stories found</h4>
+            <h4 className="font-display font-bold text-xl text-forest-900">
+              {newsStoriesData.length === 0 ? "Stories Coming Soon" : "No stories found"}
+            </h4>
             <p className="text-sm text-earth-500">
-              {selectedCategory === 'Saved Articles' 
-                ? "You haven't bookmarked any articles yet. Click the bookmark icon on any story to save it for later."
-                : `We couldn't find any articles matching "${searchQuery}". Try adjusting your keywords or category filters.`}
+              {newsStoriesData.length === 0
+                ? "We are currently documenting our field operations, nursery telemetry reports, and climate research. Stories across all categories will be published here soon."
+                : selectedCategory === 'Saved Articles' 
+                  ? "You haven't bookmarked any articles yet. Click the bookmark icon on any story to save it for later."
+                  : `We couldn't find any articles matching "${searchQuery}". Try adjusting your keywords or category filters.`}
             </p>
-            <button
-              onClick={() => { setSelectedCategory('All'); setSearchQuery(''); }}
-              className="inline-flex items-center space-x-2 bg-forest-900 text-white font-mono text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-xl hover:bg-forest-800 transition-colors cursor-pointer"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-              <span>Reset Filters</span>
-            </button>
+            {newsStoriesData.length > 0 && (
+              <button
+                onClick={() => { setSelectedCategory('All'); setSearchQuery(''); }}
+                className="inline-flex items-center space-x-2 bg-forest-900 text-white font-mono text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-xl hover:bg-forest-800 transition-colors cursor-pointer"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Reset Filters</span>
+              </button>
+            )}
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatePresence mode="popLayout">
               {filteredStories
-                .filter((story) => !(selectedCategory === 'All' && !searchQuery && story.id === newsStoriesData[0].id))
+                .filter((story) => !(selectedCategory === 'All' && !searchQuery && newsStoriesData.length > 0 && story.id === newsStoriesData[0]?.id))
                 .map((story) => {
                   const isBookmarked = bookmarkedIds.includes(story.id);
                   const isLiked = userLikedIds.includes(story.id);
@@ -701,8 +707,8 @@ export default function NewsStories({ onNavigate }: NewsStoriesProps) {
                       <div className="flex items-center space-x-2 shrink-0">
                         <span className="text-[10px] font-mono font-bold text-earth-500 uppercase tracking-wider">Share:</span>
                         <a href={getShareLinks(activeStory).twitter} target="_blank" rel="noopener noreferrer" className="p-2 rounded-xl text-earth-500 hover:text-[#1DA1F2] hover:bg-white border border-earth-200 transition-all" title="Share on Twitter"><Twitter className="w-4 h-4" /></a>
-                        <a href={getShareLinks(newsStoriesData[0]).linkedin} target="_blank" rel="noopener noreferrer" className="p-2 rounded-xl text-earth-500 hover:text-[#0A66C2] hover:bg-white border border-earth-200 transition-all" title="Share on LinkedIn"><Linkedin className="w-4 h-4" /></a>
-                        <a href={getShareLinks(newsStoriesData[0]).facebook} target="_blank" rel="noopener noreferrer" className="p-2 rounded-xl text-earth-500 hover:text-[#1877F2] hover:bg-white border border-earth-200 transition-all" title="Share on Facebook"><Facebook className="w-4 h-4" /></a>
+                        <a href={getShareLinks(activeStory).linkedin} target="_blank" rel="noopener noreferrer" className="p-2 rounded-xl text-earth-500 hover:text-[#0A66C2] hover:bg-white border border-earth-200 transition-all" title="Share on LinkedIn"><Linkedin className="w-4 h-4" /></a>
+                        <a href={getShareLinks(activeStory).facebook} target="_blank" rel="noopener noreferrer" className="p-2 rounded-xl text-earth-500 hover:text-[#1877F2] hover:bg-white border border-earth-200 transition-all" title="Share on Facebook"><Facebook className="w-4 h-4" /></a>
                         <button onClick={() => handleCopyLink(activeStory.id)} className="p-2 rounded-xl text-earth-500 hover:text-emerald-600 hover:bg-white border border-earth-200 transition-all cursor-pointer" title="Copy Article Link">
                           {copiedId === activeStory.id ? <Check className="w-4 h-4 text-emerald-600" /> : <Link className="w-4 h-4" />}
                         </button>

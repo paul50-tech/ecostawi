@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Sprout, Globe, Laptop, Heart, FileText, Phone, Award } from 'lucide-react';
+import { Menu, X, Sprout, Globe, Laptop, Heart, FileText, Phone, Award, MapPin } from 'lucide-react';
 import Logo from './Logo';
 
 interface NavbarProps {
@@ -24,6 +24,7 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
     { id: 'home', label: 'Home', icon: Globe },
     { id: 'about', label: 'About Us', icon: Award },
     { id: 'programmes', label: 'Programmes', icon: Sprout },
+    { id: 'explore', label: 'Explore Our Work', icon: MapPin },
     { id: 'digital', label: 'EcoStawi Digital', icon: Laptop },
     { id: 'news', label: 'News & Stories', icon: FileText },
     { id: 'get-involved', label: 'Get Involved', icon: Heart },
@@ -88,16 +89,24 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
             
             <button
               id="cta-nav-button"
-              onClick={() => handleNavClick('get-involved')}
-              className="ml-4 bg-forest-600 hover:bg-forest-700 text-white font-medium text-sm px-5 py-2.5 rounded-xl shadow-md shadow-forest-600/10 hover:shadow-lg hover:shadow-forest-600/20 transition-all duration-300 cursor-pointer transform hover:-translate-y-0.5 flex items-center space-x-1.5"
+              onClick={() => handleNavClick('donate')}
+              className="ml-4 bg-forest-600 hover:bg-forest-700 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md shadow-forest-600/10 hover:shadow-lg hover:shadow-forest-600/20 transition-all duration-300 cursor-pointer transform hover:-translate-y-0.5 flex items-center space-x-1.5 animate-pulse"
             >
-              <Heart className="w-4 h-4 fill-white/10" />
-              <span>Donate</span>
+              <Heart className="w-4 h-4 fill-white/30 text-white" />
+              <span>Donate to Our Mission</span>
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex lg:hidden">
+          {/* Mobile Actions & Menu Toggle */}
+          <div className="flex lg:hidden items-center space-x-2">
+            <button
+              id="mobile-header-cta-donate"
+              onClick={() => handleNavClick('donate')}
+              className="bg-forest-600 hover:bg-forest-700 text-white font-bold text-xs sm:text-sm px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl shadow-md shadow-forest-600/10 transition-all duration-300 cursor-pointer flex items-center space-x-1.5 animate-pulse"
+            >
+              <Heart className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-white/30 text-white" />
+              <span>Donate</span>
+            </button>
             <button
               id="mobile-menu-toggle"
               onClick={() => setIsOpen(!isOpen)}
@@ -142,11 +151,19 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
               })}
               <div className="pt-4 border-t border-earth-100 flex flex-col space-y-2">
                 <button
-                  id="mobile-nav-cta"
-                  onClick={() => handleNavClick('get-involved')}
-                  className="w-full bg-forest-600 text-white font-medium text-center py-3 rounded-xl shadow-md shadow-forest-600/10 hover:bg-forest-700 transition-colors duration-200"
+                  id="mobile-nav-cta-donate"
+                  onClick={() => handleNavClick('donate')}
+                  className="w-full bg-forest-600 text-white font-bold text-center py-3.5 rounded-xl shadow-md shadow-forest-600/10 hover:bg-forest-700 transition-colors duration-200 flex items-center justify-center space-x-2"
                 >
-                  Get Involved & Donate
+                  <Heart className="w-4 h-4 fill-white/20" />
+                  <span>Donate to Our Mission</span>
+                </button>
+                <button
+                  id="mobile-nav-cta-involved"
+                  onClick={() => handleNavClick('get-involved')}
+                  className="w-full bg-earth-100 text-forest-900 font-semibold text-center py-2.5 rounded-xl hover:bg-earth-200 transition-colors duration-200 text-sm"
+                >
+                  Get Involved & Volunteer
                 </button>
               </div>
             </div>

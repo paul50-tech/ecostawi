@@ -9,6 +9,8 @@ import NewsStories from './components/NewsStories';
 import GetInvolved from './components/GetInvolved';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ExploreWork from './components/ExploreWork';
+import DonateSection from './components/DonateSection';
 import { ArrowUp, Trees } from 'lucide-react';
 
 export default function App() {
@@ -102,6 +104,7 @@ export default function App() {
                     <Hero onNavigate={setActiveTab} />
                     <About />
                     <Programmes />
+                    <ExploreWork onNavigate={setActiveTab} />
                     <Digital />
                     <NewsStories onNavigate={setActiveTab} />
                     <Contact />
@@ -110,6 +113,8 @@ export default function App() {
                   <div className="pt-20"><About /></div>
                 ) : activeTab === 'programmes' ? (
                   <div className="pt-20"><Programmes /></div>
+                ) : activeTab === 'explore' ? (
+                  <div className="pt-20"><ExploreWork onNavigate={setActiveTab} /></div>
                 ) : activeTab === 'digital' ? (
                   <div className="pt-20"><Digital /></div>
                 ) : activeTab === 'news' ? (
@@ -120,6 +125,10 @@ export default function App() {
                     <div id="involved-direct-wrapper">
                       <GetInvolved />
                     </div>
+                  </div>
+                ) : activeTab === 'donate' ? (
+                  <div className="pt-20">
+                    <DonateSection />
                   </div>
                 ) : activeTab === 'contact' ? (
                   <div className="pt-20"><Contact /></div>

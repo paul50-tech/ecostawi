@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Trees, Users, Heart, Award } from 'lucide-react';
+import { ArrowRight, Heart } from 'lucide-react';
 import Logo from './Logo';
 import heroImage from '../assets/images/hero_forest_kenya_1784624447889.jpg';
 
@@ -9,12 +9,6 @@ interface HeroProps {
 }
 
 export default function Hero({ onNavigate }: HeroProps) {
-  const stats = [
-    { label: 'Community Nurseries', value: '12 Active', icon: Trees },
-    { label: 'Pilot Seedlings Target', value: '25,000', icon: Award },
-    { label: 'Pioneer Farmers', value: '250+ Enrolled', icon: Users }
-  ];
-
   return (
     <div id="hero-section" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-forest-950 pt-20">
       {/* Background Image with Dark Overlay */}
@@ -96,41 +90,13 @@ export default function Hero({ onNavigate }: HeroProps) {
           </button>
         </motion.div>
 
-        {/* Trust Stats Bar */}
-        <motion.div
-          id="hero-stats-container"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="w-full max-w-5xl bg-forest-900/60 backdrop-blur-md border border-forest-800/60 rounded-3xl p-6 sm:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
-        >
-          {stats.map((stat, i) => {
-            const Icon = stat.icon;
-            return (
-              <div key={i} id={`hero-stat-${i}`} className="flex flex-col items-center md:items-start md:px-6 md:border-r last:border-r-0 border-forest-800/40 text-center md:text-left">
-                <div className="flex items-center space-x-3 mb-2">
-                  <div className="bg-emerald-500/10 p-2.5 rounded-xl text-emerald-400">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <span className="font-display font-extrabold text-2xl sm:text-3xl text-white tracking-tight">
-                    {stat.value}
-                  </span>
-                </div>
-                <span className="text-xs sm:text-sm text-forest-300 tracking-wider uppercase font-medium">
-                  {stat.label}
-                </span>
-              </div>
-            );
-          })}
-        </motion.div>
-
         {/* Foundation Motto Quote */}
         <motion.div
           id="hero-motto-quote"
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="mt-16 text-center max-w-2xl px-4 border-t border-white/10 pt-8"
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mt-6 text-center max-w-2xl px-4 border-t border-white/10 pt-8"
         >
           <p className="text-sm italic text-forest-200/90 leading-relaxed font-light">
             "Nature cannot thrive without people, and people cannot thrive without nature. Every tree restored, every livelihood strengthened, is an investment in our collective future."

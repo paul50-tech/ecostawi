@@ -53,7 +53,6 @@ export default function Digital() {
               >
                 <Download className="w-5 h-5 text-forest-950 group-hover:-translate-y-0.5 transition-transform" />
                 <div className="text-left leading-none">
-                  <span className="block text-[9px] uppercase tracking-widest font-mono font-bold opacity-80 mb-1">Direct Binary / APK</span>
                   <span className="text-sm">Download for Android</span>
                 </div>
               </a>
@@ -68,7 +67,6 @@ export default function Digital() {
               >
                 <Smartphone className="w-5 h-5 text-emerald-400 group-hover:scale-110 transition-transform" />
                 <div className="text-left leading-none">
-                  <span className="block text-[9px] uppercase tracking-widest font-mono text-forest-300 mb-1">Coming Soon</span>
                   <span className="text-sm">Download for iOS</span>
                 </div>
               </a>

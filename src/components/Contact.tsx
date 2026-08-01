@@ -5,7 +5,7 @@ import { Phone, Mail, MapPin, Send, CheckCircle2, Clock, HelpCircle, FileText } 
 export default function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [subject, setSubject] = useState('General Inquiry');
+  const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [success, setSuccess] = useState(false);
 
@@ -63,9 +63,6 @@ export default function Contact() {
                     <span className="block text-[10px] uppercase font-mono tracking-wider text-earth-400">Email Correspondence</span>
                     <span className="text-sm font-bold text-forest-850">
                       info@ecostawi.org
-                    </span>
-                    <span className="block text-[9px] text-orange-600 font-mono font-bold mt-1 bg-orange-50 px-2 py-0.5 rounded border border-orange-100 w-fit">
-                      * Domain Setup Pending. Direct messages route through server portal.
                     </span>
                   </div>
                 </div>
@@ -143,18 +140,15 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-earth-500 mb-2">Inquiry Category: *</label>
-                  <select
+                  <label className="block text-xs font-semibold text-earth-500 mb-2">Inquiry Type: *</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. General Inquiry, Partnership, Support"
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-earth-200 bg-earth-50 focus:outline-none focus:ring-1 focus:ring-forest-500 text-sm font-medium cursor-pointer"
-                  >
-                    <option value="General Inquiry">General Corporate Inquiry</option>
-                    <option value="CSR / Partnership Support">CSR & Corporate Partnership alignments</option>
-                    <option value="Carbon Credit Validation">Carbon Credits Sequestration verification</option>
-                    <option value="Volunteer / Community Membership">Volunteer & School woodlot registration</option>
-                    <option value="Research & GIS Collaboration">Academic GIS or Telemetry collaboration</option>
-                  </select>
+                    className="w-full px-4 py-3 rounded-xl border border-earth-200 bg-earth-50 focus:outline-none focus:ring-1 focus:ring-forest-500 text-sm font-medium"
+                  />
                 </div>
 
                 <div>

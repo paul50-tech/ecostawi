@@ -2,7 +2,7 @@ import { Programme, NewsStory, Project, CareerPost } from './types';
 
 // Import custom generated high-fidelity photos representing real EcoStawi activities
 import forestRestorationImg from './assets/images/hero_forest_kenya_1784624447889.jpg';
-import mangroveRestorationImg from './assets/images/mangrove_restoration_kenya_1784624465676.jpg';
+import mangroveRestorationImg from './assets/images/coastal_ecosystem_aerial_1785395836373.jpg';
 import communityLivelihoodImg from './assets/images/beekeeping_livelihood_kenya_1784624482358.jpg';
 import climateSmartAgricultureImg from './assets/images/climatesmart_agriculture_kenya_1784624498922.jpg';
 import carbonFinanceImg from './assets/images/carbon_finance_drone_1784624517946.jpg';

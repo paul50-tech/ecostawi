@@ -168,7 +168,7 @@ export default function Programmes() {
               Our Long-term Commitment
             </span>
             <h4 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl leading-tight text-white mb-4">
-              We grow ecosystems. We grow opportunities. We grow together.
+              We grow ecosystems and create opportunities.
             </h4>
             <p className="text-forest-200 text-sm leading-relaxed mb-6 font-light">
               At EcoStawi Foundation, we believe that nature and people flourish together. Every tree planted, every wetland protected, every livelihood strengthened, and every partnership formed is an investment in a future where communities and ecosystems thrive side by side.

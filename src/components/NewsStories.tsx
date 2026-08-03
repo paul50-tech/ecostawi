@@ -271,7 +271,7 @@ export default function NewsStories({ onNavigate }: NewsStoriesProps) {
         {selectedCategory === 'All' && !searchQuery && newsStoriesData.length > 0 && (
           <div id="featured-story-banner" className="mb-14 bg-white rounded-3xl border border-earth-200 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-0">
             <div className="lg:col-span-6 relative h-64 sm:h-96 lg:h-auto min-h-[340px] group overflow-hidden">
-              <img
+              <img loading="lazy"
                 src={newsStoriesData[0].image}
                 alt={newsStoriesData[0].title}
                 className="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-500"
@@ -438,7 +438,7 @@ export default function NewsStories({ onNavigate }: NewsStoriesProps) {
                       <div>
                         {/* Image banner */}
                         <div className="relative h-52 w-full overflow-hidden cursor-pointer" onClick={() => setActiveStory(story)}>
-                          <img
+                          <img loading="lazy"
                             src={story.image}
                             alt={story.title}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -656,7 +656,7 @@ export default function NewsStories({ onNavigate }: NewsStoriesProps) {
                 >
                   {/* Hero Image */}
                   <div className="relative h-64 sm:h-80 w-full">
-                    <img
+                    <img loading="lazy"
                       src={activeStory.image}
                       alt={activeStory.title}
                       className="w-full h-full object-cover"
@@ -782,7 +782,7 @@ export default function NewsStories({ onNavigate }: NewsStoriesProps) {
                               onClick={() => setActiveStory(rel)}
                               className="p-3.5 rounded-2xl border border-earth-200 hover:border-emerald-300 bg-white hover:shadow-md transition-all cursor-pointer flex items-center space-x-3 group"
                             >
-                              <img src={rel.image} alt={rel.title} className="w-16 h-16 rounded-xl object-cover shrink-0" />
+                              <img loading="lazy" src={rel.image} alt={rel.title} className="w-16 h-16 rounded-xl object-cover shrink-0" />
                               <div className="min-w-0 flex-1 space-y-1">
                                 <span className="text-[9px] font-mono font-bold text-emerald-700 uppercase">{rel.category}</span>
                                 <h5 className="font-display font-bold text-xs text-forest-900 line-clamp-2 leading-snug group-hover:text-forest-700">

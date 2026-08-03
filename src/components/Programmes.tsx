@@ -76,7 +76,7 @@ export default function Programmes() {
                   <div>
                     {/* Header Image */}
                     <div className="relative h-56 w-full">
-                      <img
+                      <img loading="lazy"
                         src={prog.image}
                         alt={`${prog.title} representing EcoStawi`}
                         className="w-full h-full object-cover"

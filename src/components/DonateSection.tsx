@@ -8,38 +8,28 @@ interface CurrencyConfig {
   code: CurrencyCode;
   symbol: string;
   name: string;
-  presets: number[];
-  defaultAmount: number;
 }
 
 const CURRENCIES: Record<CurrencyCode, CurrencyConfig> = {
   KES: {
     code: 'KES',
     symbol: 'KSh',
-    name: 'Kenyan Shilling (KES)',
-    presets: [500, 1500, 3500, 10000],
-    defaultAmount: 1500
+    name: 'Kenyan Shilling (KES)'
   },
   USD: {
     code: 'USD',
     symbol: '$',
-    name: 'US Dollar (USD)',
-    presets: [10, 25, 50, 100],
-    defaultAmount: 25
+    name: 'US Dollar (USD)'
   },
   EUR: {
     code: 'EUR',
     symbol: '€',
-    name: 'Euro (EUR)',
-    presets: [10, 25, 50, 100],
-    defaultAmount: 25
+    name: 'Euro (EUR)'
   },
   GBP: {
     code: 'GBP',
     symbol: '£',
-    name: 'British Pound (GBP)',
-    presets: [10, 20, 40, 80],
-    defaultAmount: 20
+    name: 'British Pound (GBP)'
   }
 };
 
@@ -53,7 +43,6 @@ const TARGET_COUNTIES = [
 
 export default function DonateSection() {
   const [currency, setCurrency] = useState<CurrencyCode>('USD');
-  const [selectedAmount, setSelectedAmount] = useState<number>(25);
   const [customAmount, setCustomAmount] = useState<string>('');
   const [donorName, setDonorName] = useState<string>('');
   const [donorEmail, setDonorEmail] = useState<string>('');
@@ -80,12 +69,15 @@ export default function DonateSection() {
 
   const handleCurrencyChange = (newCode: CurrencyCode) => {
     setCurrency(newCode);
-    setSelectedAmount(CURRENCIES[newCode].defaultAmount);
     setCustomAmount('');
   };
 
   const handleDonateSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!customAmount || Number(customAmount) <= 0) {
+      alert("Please enter a valid donation amount.");
+      return;
+    }
     if (paymentMethod === 'mpesa') {
       if (!mpesaPhone || mpesaPhone.length < 9) {
         alert("Please enter your M-Pesa registered phone number.");
@@ -183,32 +175,9 @@ export default function DonateSection() {
                     </button>
                   </div>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                    {currentCurrency.presets.map((amount) => {
-                      const isSelected = selectedAmount === amount && customAmount === '';
-                      return (
-                        <button
-                          key={amount}
-                          type="button"
-                          onClick={() => {
-                            setSelectedAmount(amount);
-                            setCustomAmount('');
-                          }}
-                          className={`py-4 rounded-2xl border text-center font-display font-bold text-lg transition-all cursor-pointer ${
-                            isSelected
-                              ? 'bg-forest-900 border-forest-900 text-white shadow-md shadow-forest-900/10 scale-105'
-                              : 'bg-white border-earth-200 text-earth-700 hover:border-forest-600 hover:bg-forest-50/30'
-                          }`}
-                        >
-                          {currentCurrency.symbol}{amount.toLocaleString()}
-                        </button>
-                      );
-                    })}
-                  </div>
-
                   <div>
                     <label className="block text-[11px] font-mono font-semibold uppercase tracking-wider text-earth-500 mb-1">
-                      Or enter custom amount ({currentCurrency.code})
+                      Enter amount ({currentCurrency.code})
                     </label>
                     <div className="relative">
                       <span className="absolute left-4 top-1/2 -translate-y-1/2 font-mono font-bold text-lg text-earth-400">
@@ -216,11 +185,10 @@ export default function DonateSection() {
                       </span>
                       <input
                         type="number"
-                        placeholder="Other amount"
+                        placeholder="Amount"
                         value={customAmount}
                         onChange={(e) => {
                           setCustomAmount(e.target.value);
-                          if (e.target.value) setSelectedAmount(0);
                         }}
                         className="w-full pl-10 pr-4 py-3 rounded-xl border border-earth-200 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-transparent font-mono text-base font-semibold"
                       />
@@ -345,7 +313,7 @@ export default function DonateSection() {
                 >
                   <Heart className="w-5 h-5 fill-white/20" />
                   <span>
-                    Donate {currentCurrency.symbol}{customAmount || selectedAmount.toLocaleString()} to Our Mission
+                    Donate {customAmount ? `${currentCurrency.symbol}${Number(customAmount).toLocaleString()} ` : ''}to Our Mission
                   </span>
                 </button>
 
@@ -365,7 +333,7 @@ export default function DonateSection() {
                 </div>
                 <h3 className="font-display font-bold text-3xl text-forest-900">Thank You, {donorName || 'Guardian'}!</h3>
                 <p className="text-earth-600 max-w-md mx-auto text-sm leading-relaxed">
-                  Your contribution of <strong className="text-forest-900">{currentCurrency.symbol}{customAmount || selectedAmount}</strong> has been allocated to our operational launch in Nairobi, Mombasa, Kwale, Kilifi, and Tana River.
+                  Your contribution of <strong className="text-forest-900">{currentCurrency.symbol}{Number(customAmount || 0).toLocaleString()}</strong> has been allocated to our operational launch in Nairobi, Mombasa, Kwale, Kilifi, and Tana River.
                 </p>
                 <button
                   onClick={() => setDonationSuccess(false)}
@@ -450,7 +418,7 @@ export default function DonateSection() {
                         Check Your Phone
                       </h4>
                       <p className="text-xs text-earth-600 mt-2 leading-relaxed">
-                        An STK payment prompt of <strong className="text-forest-900">{currentCurrency.symbol}{customAmount || selectedAmount}</strong> has been pushed to mobile number <strong className="font-mono text-forest-900">{mpesaPhone}</strong>.
+                        An STK payment prompt of <strong className="text-forest-900">{currentCurrency.symbol}{Number(customAmount || 0).toLocaleString()}</strong> has been pushed to mobile number <strong className="font-mono text-forest-900">{mpesaPhone}</strong>.
                       </p>
                       <div className="mt-4 p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-left">
                         <span className="text-[10px] font-mono font-bold text-emerald-800 block">RECEIVING PAYBILL / TILL:</span>
@@ -489,7 +457,7 @@ export default function DonateSection() {
                         Simulated Phone Prompt
                       </h4>
                       <p className="text-xs text-earth-600 mt-1">
-                        Enter PIN to authorize transfer of <strong className="text-forest-900">{currentCurrency.symbol}{customAmount || selectedAmount}</strong> to <strong className="font-mono text-emerald-900">+254 715 913 658</strong>.
+                        Enter PIN to authorize transfer of <strong className="text-forest-900">{currentCurrency.symbol}{Number(customAmount || 0).toLocaleString()}</strong> to <strong className="font-mono text-emerald-900">+254 715 913 658</strong>.
                       </p>
                     </div>
                     <div className="max-w-[200px] mx-auto">
@@ -539,7 +507,7 @@ export default function DonateSection() {
                         Transfer Successful!
                       </h4>
                       <p className="text-xs text-earth-600 mt-2 leading-relaxed">
-                        Received <strong className="text-forest-900">{currentCurrency.symbol}{customAmount || selectedAmount}</strong> from +254 {mpesaPhone} to EcoStawi Foundation (+254 715 913 658).
+                        Received <strong className="text-forest-900">{currentCurrency.symbol}{Number(customAmount || 0).toLocaleString()}</strong> from +254 {mpesaPhone} to EcoStawi Foundation (+254 715 913 658).
                       </p>
                     </div>
                     <button

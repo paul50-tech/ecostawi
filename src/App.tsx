@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
-import Programmes from './components/Programmes';
-import Digital from './components/Digital';
-import NewsStories from './components/NewsStories';
-import GetInvolved from './components/GetInvolved';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import ExploreWork from './components/ExploreWork';
-import DonateSection from './components/DonateSection';
 import { ArrowUp, Trees } from 'lucide-react';
+
+const About = lazy(() => import('./components/About'));
+const Programmes = lazy(() => import('./components/Programmes'));
+const Digital = lazy(() => import('./components/Digital'));
+const NewsStories = lazy(() => import('./components/NewsStories'));
+const GetInvolved = lazy(() => import('./components/GetInvolved'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
+const ExploreWork = lazy(() => import('./components/ExploreWork'));
+const DonateSection = lazy(() => import('./components/DonateSection'));
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('home');
@@ -91,54 +92,58 @@ export default function App() {
 
           {/* Core Body Container */}
           <main id="app-main-content" className="flex-grow">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.4, ease: 'easeInOut' }}
-              >
-                {activeTab === 'home' ? (
-                  <div id="home-view-group">
-                    <Hero onNavigate={setActiveTab} />
-                    <About />
-                    <Programmes />
-                    <ExploreWork onNavigate={setActiveTab} />
-                    <Digital />
-                    <NewsStories onNavigate={setActiveTab} />
-                    <Contact />
-                  </div>
-                ) : activeTab === 'about' ? (
-                  <div className="pt-20"><About /></div>
-                ) : activeTab === 'programmes' ? (
-                  <div className="pt-20"><Programmes /></div>
-                ) : activeTab === 'explore' ? (
-                  <div className="pt-20"><ExploreWork onNavigate={setActiveTab} /></div>
-                ) : activeTab === 'digital' ? (
-                  <div className="pt-20"><Digital /></div>
-                ) : activeTab === 'news' ? (
-                  <div className="pt-20"><NewsStories onNavigate={setActiveTab} /></div>
-                ) : activeTab === 'get-involved' ? (
-                  // Map 'get-involved' to the rich GetInvolved actions component!
-                  <div className="pt-20">
-                    <div id="involved-direct-wrapper">
-                      <GetInvolved />
+            <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><Trees className="w-8 h-8 text-emerald-500 animate-pulse" /></div>}>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4, ease: 'easeInOut' }}
+                >
+                  {activeTab === 'home' ? (
+                    <div id="home-view-group">
+                      <Hero onNavigate={setActiveTab} />
+                      <About />
+                      <Programmes />
+                      <ExploreWork onNavigate={setActiveTab} />
+                      <Digital />
+                      <NewsStories onNavigate={setActiveTab} />
+                      <Contact />
                     </div>
-                  </div>
-                ) : activeTab === 'donate' ? (
-                  <div className="pt-20">
-                    <DonateSection />
-                  </div>
-                ) : activeTab === 'contact' ? (
-                  <div className="pt-20"><Contact /></div>
-                ) : null}
-              </motion.div>
-            </AnimatePresence>
+                  ) : activeTab === 'about' ? (
+                    <div className="pt-20"><About /></div>
+                  ) : activeTab === 'programmes' ? (
+                    <div className="pt-20"><Programmes /></div>
+                  ) : activeTab === 'explore' ? (
+                    <div className="pt-20"><ExploreWork onNavigate={setActiveTab} /></div>
+                  ) : activeTab === 'digital' ? (
+                    <div className="pt-20"><Digital /></div>
+                  ) : activeTab === 'news' ? (
+                    <div className="pt-20"><NewsStories onNavigate={setActiveTab} /></div>
+                  ) : activeTab === 'get-involved' ? (
+                    // Map 'get-involved' to the rich GetInvolved actions component!
+                    <div className="pt-20">
+                      <div id="involved-direct-wrapper">
+                        <GetInvolved />
+                      </div>
+                    </div>
+                  ) : activeTab === 'donate' ? (
+                    <div className="pt-20">
+                      <DonateSection />
+                    </div>
+                  ) : activeTab === 'contact' ? (
+                    <div className="pt-20"><Contact /></div>
+                  ) : null}
+                </motion.div>
+              </AnimatePresence>
+            </Suspense>
           </main>
 
           {/* Footer content */}
-          <Footer activeTab={activeTab} setActiveTab={setActiveTab} />
+          <Suspense fallback={<div className="h-32 bg-forest-950"></div>}>
+            <Footer activeTab={activeTab} setActiveTab={setActiveTab} />
+          </Suspense>
 
           {/* Back to top floating button */}
           <AnimatePresence>

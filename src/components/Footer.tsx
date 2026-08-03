@@ -23,12 +23,11 @@ export default function Footer({ activeTab, setActiveTab }: FooterProps) {
   };
 
   const socialLinks = [
-    { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com' },
-    { name: 'Instagram', icon: Instagram, url: 'https://instagram.com' },
-    { name: 'Facebook', icon: Facebook, url: 'https://facebook.com' },
-    { name: 'YouTube', icon: Youtube, url: 'https://youtube.com' },
-    { name: 'X', icon: Twitter, url: 'https://x.com' },
-    { name: 'TikTok', icon: MessageCircle, url: 'https://tiktok.com' }
+    { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/company/ecostawi-foundation/' },
+    { name: 'Instagram', icon: Instagram, url: 'https://www.instagram.com/ecostawifoundation/' },
+    { name: 'Facebook', icon: Facebook, url: 'https://www.facebook.com/share/1BmJGZBPSw/' },
+    { name: 'YouTube', icon: Youtube, url: 'https://youtube.com/@ecostawifoundation?si=1lhyw36_Z8JIaLt3' },
+    { name: 'X', icon: Twitter, url: 'https://x.com/EcostawiF' }
   ];
 
   const quickLinks = [

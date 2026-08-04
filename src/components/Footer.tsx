@@ -1,11 +1,26 @@
 import React, { useState } from 'react';
-import { Sprout, Mail, Youtube, Facebook, Linkedin, Instagram, Twitter, MessageCircle, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { Sprout, Mail, Youtube, Facebook, Linkedin, Instagram, Twitter, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import Logo from './Logo';
 
 interface FooterProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
 }
+
+const TikTokIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
 
 export default function Footer({ activeTab, setActiveTab }: FooterProps) {
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -27,7 +42,8 @@ export default function Footer({ activeTab, setActiveTab }: FooterProps) {
     { name: 'Instagram', icon: Instagram, url: 'https://www.instagram.com/ecostawifoundation/' },
     { name: 'Facebook', icon: Facebook, url: 'https://www.facebook.com/share/1BmJGZBPSw/' },
     { name: 'YouTube', icon: Youtube, url: 'https://youtube.com/@ecostawifoundation?si=1lhyw36_Z8JIaLt3' },
-    { name: 'X', icon: Twitter, url: 'https://x.com/EcostawiF' }
+    { name: 'X', icon: Twitter, url: 'https://x.com/EcostawiF' },
+    { name: 'TikTok', icon: TikTokIcon, url: 'https://www.tiktok.com/@ecostawi.foundation?_r=1&_t=ZS-98YG4velkEH' }
   ];
 
   const quickLinks = [

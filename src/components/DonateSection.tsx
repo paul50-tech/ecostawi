@@ -111,7 +111,7 @@ export default function DonateSection() {
           <p className="text-earth-600 text-base sm:text-lg leading-relaxed">
             Your support directly finances our factual, on-the-ground operational commitments in 
             <strong className="text-forest-900 font-semibold"> Nairobi, Mombasa, Kwale, Kilifi, and Tana River</strong>. 
-            100% of public donations are directed to nursery seed propagation, women's agroforestry co-ops, and coastal blue carbon restoration.
+            100% of donations are directed to our programmes that invest in nature and empower communities.
           </p>
         </div>
 
@@ -127,7 +127,6 @@ export default function DonateSection() {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-earth-150">
                   <div>
                     <h3 className="font-display font-bold text-2xl text-forest-900">Select Your Gift</h3>
-                    <p className="text-xs text-earth-500 mt-0.5">All contributions are cryptographically audited via AI GIS telemetry.</p>
                   </div>
                   <div className="shrink-0 bg-earth-50 p-1 rounded-xl border border-earth-200 flex space-x-1">
                     {(Object.keys(CURRENCIES) as CurrencyCode[]).map((code) => (
@@ -360,7 +359,7 @@ export default function DonateSection() {
               </h3>
               
               <p className="text-earth-300 text-xs sm:text-sm leading-relaxed">
-                Unlike organizations that spend heavily on administrative overheads or publish unverified historical figures, EcoStawi Foundation operates with complete transparency. We channel resources directly into our core operational counties:
+                EcoStawi Foundation operates with complete transparency. We channel resources directly into our core operational counties:
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">

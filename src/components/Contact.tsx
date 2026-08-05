@@ -50,7 +50,7 @@ export default function Contact() {
                     <a href="tel:+254707033867" className="text-sm font-bold text-forest-850 hover:underline">
                       +254 707 033 867
                     </a>
-                    <p className="text-[10px] text-earth-400 mt-0.5">Monday – Friday, 8:00 AM – 5:00 PM EAT</p>
+                    <p className="text-[10px] text-earth-400 mt-0.5">Monday - Saturday, 8:00 AM - 5:00 PM EAT</p>
                   </div>
                 </div>
 
